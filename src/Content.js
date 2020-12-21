@@ -1,8 +1,18 @@
-import React from 'react';
+//import React from 'react';
+
+import React, { Component } from 'react';
+
 import ImgContent from './ImgContent';
 import ContentImg1 from '../src/images/dining/25resizea.jpg';
 
-const Content = () => {
+
+//const Content = () => {
+class Content extends Component {        
+    imageClick = (img) => {
+        document.getElementById('imgallfactype6').src = img;
+    } 
+
+render () {
     return(
         <div>
             <div className="bg-white">
@@ -31,11 +41,11 @@ The all-day restaurant provides all-day dining experiences, A-la carte menus bot
                             </div>
                             <div id="bx-pager" style={{paddingTop:"5px"}}>
                                 {ImgContent.map((img, index) => (
-                                    <a href="foo" data-slide-index={index} key={index}>
+                                    <span data-slide-index={index} key={index}>
                                         <div className="box-img">
-                                            <img alt="" src={img} id={index} style={{cursor:'pointer'}} />
+                                            <img alt="" src={img} id={index} style={{cursor:'pointer'}} onClick={this.imageClick.bind(this, img)} />
                                         </div>
-                                    </a>
+                                    </span>
                                 ))}
                             </div>
                         </div>
@@ -44,5 +54,6 @@ The all-day restaurant provides all-day dining experiences, A-la carte menus bot
             </div>
         </div>
     )
+}
 }
 export default Content;
